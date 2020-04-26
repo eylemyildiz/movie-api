@@ -80,7 +80,7 @@ router.delete('/:movie_id', (req,res,next)=>{
 
 //Veritabanına movie ekleme
 router.post('/', function(req, res, next) {
-  const { title, imdb_score, category, country, year } =req.body;
+  /*const { title, imdb_score, category, country, year } =req.body;
   //diyelim çok fazla data göndericez.Bu durumda yukarıdaki destructure'ı kapatıp aşağıdaki satırı da şu hale getirebiliriz.
   //const movie= new Movie(req.body);
   const movie= new Movie({
@@ -89,8 +89,8 @@ router.post('/', function(req, res, next) {
     category: category,
     country: country,
     year: year
-  });
-
+  });*/
+  const movie= new Movie(req.body);
   //Daha temiz hali aşağıda promise'li yapı
  /* movie.save((err,data) =>{
     if(err)
