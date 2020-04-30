@@ -124,4 +124,44 @@ router.get('/:director_id',(req,res,)=>{
     res.json(err);
   });
 });
+
+
+//Director güncelleme endpoint'i için
+router.put('/:director_id', (req,res,next)=>{
+  //res.send(req.params);
+  const promise= Director.findByIdAndUpdate(
+      req.params.director_id,
+      req.body,
+      //Güncelleme işlemi sonrasında güncellenen datanın dönmesi için; yoksa hep çıktı olarak bir öncekini basıyor güncelleme yaptığı halde
+      {
+        new: true
+      }
+  );
+
+  promise.then((director) =>{
+    if(!director)
+      next({message: 'The director was not found!',code: 99});
+
+    res.json(director);
+  }).catch((err)=>{
+    res.json(err);
+  });
+});
+
+//Veritabanından director silme
+router.delete('/:director_id', (req,res,next)=>{
+  //res.send(req.params);
+  const promise= Director.findByIdAndRemove(req.params.director_id);
+
+  promise.then((director) =>{
+    if(!director)
+      next({message: 'The director was not found!',code: 99});
+
+    res.json(director);
+  }).catch((err)=>{
+    res.json(err);
+  });
+});
+
+
 module.exports = router;
