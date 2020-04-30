@@ -8,6 +8,9 @@ const indexRouter = require('./routes/index');
 const movieRouter = require('./routes/movie');
 const directorRouter = require('./routes/director');
 
+//Middleware
+const verifyToken=require('./middleware/verify-token');
+
 const app = express();
 
 //db connections
@@ -28,6 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', verifyToken); // api altındaki her türlü endpoint için bu geçerli
 app.use('/api/movies', movieRouter);
 app.use('/api/directors', directorRouter);
 
