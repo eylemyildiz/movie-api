@@ -11,8 +11,12 @@ const directorRouter = require('./routes/director');
 const app = express();
 
 //db connections
-
 const db= require('./helper/db.js')();
+
+//token işlemi için eklendi.
+const config = require('./config');
+//config dosyasında anımlanan key'i global olarak kullanabilmek için:
+app.set('api_secret_key', config.api_secret_key); //daha sonra bu get ile kullanılırç
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
