@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www",
-    "test": "mocha --exit --recursive"
+    "test": "mocha --exit --recursive --compilers ts:typescript-require"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "mocha": "^7.1.2"
+    "mocha": "^7.1.2",
+    "typescript-require": "^0.2.10"
   }
 }
