@@ -1,4 +1,7 @@
 # movie-api
+
+[![Build status](https://api.travis-ci.com/eylemyildiz/movie-api.svg)](https://travis-ci.com/github/eylemyildiz/movie-api)
+
 Node JS - Movie API
 
 # Movies
