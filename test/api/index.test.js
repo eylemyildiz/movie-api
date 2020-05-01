@@ -7,7 +7,7 @@ const server = require('../../app');
 chai.use(chaiHttp); //http plug-in için
 
 describe('Node Server', () =>{
-    it('(GET /) anasayfayı döndürür' , (done) =>{
+    it('(GET /) returns homepage' , (done) =>{
        chai.request(server)
            .get('/')    //direk kök dizin
            .end((err,res)=>{
