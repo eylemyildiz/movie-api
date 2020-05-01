@@ -22,7 +22,5 @@
     "mongoose": "^5.9.10",
     "morgan": "~1.9.1"
   },
-  "devDependencies": {
-    "typescript-require": "^0.2.10"
-  }
+  "devDependencies": {}
 }
