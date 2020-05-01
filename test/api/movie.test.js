@@ -85,4 +85,49 @@ describe('/api/movies tests', () =>{
                });
         });
     });
+
+    describe('/PUT/:movie_id movie', () =>{
+        it('it should update a movie by given id', (done) =>{
+            //Veritabanına gönderilecek data'lar
+            const movie = {
+                title: '93asdadas',
+                director_id:'5ea5e1a7034e8637742a4262',
+                category:'Komedi',
+                country:'Fransa',
+                year:2000,
+                imdb_score:9
+            };
+            chai.request(server)
+                .put('/api/movies/'+ movieId)
+                .send(movie)
+                .set('x-access-token',token)
+                .end((err,res)=>{
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    //Dataların güncellenip güncellenmediğini kontrol ediyoruz.
+                    res.body.should.have.property('title').eql(movie.title);
+                    res.body.should.have.property('director_id').eql(movie.director_id);
+                    res.body.should.have.property('category').eql(movie.category);
+                    res.body.should.have.property('category').eql(movie.category);
+                    res.body.should.have.property('year').eql(movie.year);
+                    res.body.should.have.property('imdb_score').eql(movie.imdb_score);
+                    done();
+                });
+        });
+    });
+
+    describe('/DELETE/:movie_id movie', () =>{
+        it('it should delete a movie by given id', (done) =>{
+            chai.request(server)
+                .delete('/api/movies/'+ movieId)
+                .set('x-access-token',token)
+                .end((err,res)=>{
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    //Dataların güncellenip güncellenmediğini kontrol ediyoruz.
+                    res.body.should.have.property('status').eql(1);
+                    done();
+                });
+        });
+    });
 });
